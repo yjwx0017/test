@@ -45,4 +45,6 @@ void testLexicalCast()
 	int i;
 	ss >> i;
 	cout << i << endl;
+
+	// 
 }

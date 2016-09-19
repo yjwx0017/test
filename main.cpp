@@ -2,6 +2,7 @@
 #include <vector>
 #include <boost/lexical_cast.hpp>
 #include <sstream>
+#include <string>
 using namespace std;
 
 void testVector();
@@ -39,12 +40,16 @@ void testLexicalCast()
 	//cout << boost::lexical_cast<int>("0x0362") << endl;
 
 	// 十六进制字符串转成整数 0x前缀可有可无
-	// C++11 中的 std::stoi <string>
 	stringstream ss;
 	ss << hex << "0x0362f"; // 13871  
 	int i;
 	ss >> i;
 	cout << i << endl;
+
+	// 十六进制字符串转成整数 C++11 中的 std::stoi <string>
+	cout << std::stoi("0x0362f", 0, 16) << endl;
+	cout << std::stoi("0362f", 0, 16) << endl;
+	//cout << std::stoi("", 0, 16) << endl; // 抛出异常
 
 	// 字符串转换为bool 只支持 0 和 1，不支持true或false或其他整数值
 	//cout << boost::lexical_cast<bool>("true") << endl;

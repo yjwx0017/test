@@ -46,5 +46,12 @@ void testLexicalCast()
 	ss >> i;
 	cout << i << endl;
 
-	// 
+	// 字符串转换为bool 只支持 0 和 1，不支持true或false或其他整数值
+	//cout << boost::lexical_cast<bool>("true") << endl;
+	//cout << boost::lexical_cast<bool>("false") << endl;
+	//cout << boost::lexical_cast<bool>("True") << endl;
+ 	//cout << boost::lexical_cast<bool>("-1") << endl;
+ 	//cout << boost::lexical_cast<bool>("2") << endl;
+ 	cout << boost::lexical_cast<bool>("1") << endl;
+ 	cout << boost::lexical_cast<bool>("0") << endl;
 }

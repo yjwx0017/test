@@ -4,8 +4,7 @@
 - test github
 - test everything
 
-:octocat::tangerine:
-
-http://emoji.muan.co/
-
-https://github.com/muan/emoji
+:octocat::tangerine:<br />
+http://emoji.muan.co/<br />
+https://github.com/muan/emoji<br />
+http://www.webpagefx.com/tools/emoji-cheat-sheet/

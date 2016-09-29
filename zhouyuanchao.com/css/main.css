@@ -1,0 +1,44 @@
+body {
+	width: 1000px;
+	margin: auto;
+}
+
+.clear {
+	clear: both;
+}
+
+div#wrapper {
+}
+
+div#nav a {
+	display: block;
+	height: 2em;
+	background-color: #c8c8c8;
+	color: #000000;
+	text-decoration: none;
+	text-align: center;
+	line-height: 2em;
+	font-family: 幼圆, 微软雅黑, 黑体, 宋体, Monospace, Sans-serif, Serif;
+	font-size: 2em;
+}
+
+div#nav a:hover {
+	background-color: #c0c0c0;
+	border-style: solid;
+	border-color: #ff0000;
+	border-width: 0 0 6px 0;
+}
+
+div#nav ul {
+	padding: 0;
+}
+
+div#nav li {
+	float: left;
+	list-style-type: none;
+	width: 20%;
+}
+
+img#placeholder {
+	margin: 150px 0 0 230px;
+}

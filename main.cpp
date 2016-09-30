@@ -27,31 +27,31 @@ void testVector()
 
 void testLexicalCast()
 {
-	// ÒÔÏÂ»áÅ×³öÒì³£
+	// ä»¥ä¸‹ä¼šæŠ›å‡ºå¼‚å¸¸
 	//cout << boost::lexical_cast<int>("  123  ") << endl;
 	//cout << boost::lexical_cast<int>("123  ") << endl;
 	//cout << boost::lexical_cast<int>("12 3") << endl;
 	//cout << boost::lexical_cast<int>("1 2 3") << endl;
 
-	// ¿Õ×Ö·û´®»áÅ×³öÒì³£
+	// ç©ºå­—ç¬¦ä¸²ä¼šæŠ›å‡ºå¼‚å¸¸
 	//cout << boost::lexical_cast<int>("") << endl;
 
-	// ²»Ö§³ÖÊ®Áù½øÖÆ
+	// ä¸æ”¯æŒåå…­è¿›åˆ¶
 	//cout << boost::lexical_cast<int>("0x0362") << endl;
 
-	// Ê®Áù½øÖÆ×Ö·û´®×ª³ÉÕûÊı 0xÇ°×º¿ÉÓĞ¿ÉÎŞ
+	// åå…­è¿›åˆ¶å­—ç¬¦ä¸²è½¬æˆæ•´æ•° 0xå‰ç¼€å¯æœ‰å¯æ— 
 	stringstream ss;
 	ss << hex << "0x0362f"; // 13871  
 	int i;
 	ss >> i;
 	cout << i << endl;
 
-	// Ê®Áù½øÖÆ×Ö·û´®×ª³ÉÕûÊı C++11 ÖĞµÄ std::stoi <string>
+	// åå…­è¿›åˆ¶å­—ç¬¦ä¸²è½¬æˆæ•´æ•° C++11 ä¸­çš„ std::stoi <string>
 	cout << std::stoi("0x0362f", 0, 16) << endl;
 	cout << std::stoi("0362f", 0, 16) << endl;
-	//cout << std::stoi("", 0, 16) << endl; // Å×³öÒì³£
+	//cout << std::stoi("", 0, 16) << endl; // æŠ›å‡ºå¼‚å¸¸
 
-	// ×Ö·û´®×ª»»Îªbool Ö»Ö§³Ö 0 ºÍ 1£¬²»Ö§³Ötrue»òfalse»òÆäËûÕûÊıÖµ
+	// å­—ç¬¦ä¸²è½¬æ¢ä¸ºbool åªæ”¯æŒ 0 å’Œ 1ï¼Œä¸æ”¯æŒtrueæˆ–falseæˆ–å…¶ä»–æ•´æ•°å€¼
 	//cout << boost::lexical_cast<bool>("true") << endl;
 	//cout << boost::lexical_cast<bool>("false") << endl;
 	//cout << boost::lexical_cast<bool>("True") << endl;
@@ -59,4 +59,6 @@ void testLexicalCast()
  	//cout << boost::lexical_cast<bool>("2") << endl;
  	cout << boost::lexical_cast<bool>("1") << endl;
  	cout << boost::lexical_cast<bool>("0") << endl;
+	
+	// test 
 }

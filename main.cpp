@@ -2,6 +2,7 @@
 #include <vector>
 #include <boost/lexical_cast.hpp>
 #include <boost/function.hpp>
+#include <boost/bind.hpp>
 #include <sstream>
 #include <string>
 using namespace std;
@@ -9,13 +10,15 @@ using namespace std;
 void testVector();
 void testLexicalCast();
 void testFunction();
+void testBind();
 
 int main()
 {
 	cout << "Hello, world!" << endl;
 
 	//testLexicalCast();
-	testFunction();
+	//testFunction();
+	testBind();
 	return 0;
 }
 
@@ -96,4 +99,11 @@ void testFunction()
 
 	boost::function<void (Test1*, int)> f3 = &Test1::func2;
 	f3(&t1, 100);
+}
+
+void testBind()
+{
+	Test1 t1;
+	auto f1 = boost::bind(&Test1::func2, &t1, _1);
+	f1(100);
 }

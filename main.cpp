@@ -1,18 +1,21 @@
 #include <iostream>
 #include <vector>
 #include <boost/lexical_cast.hpp>
+#include <boost/function.hpp>
 #include <sstream>
 #include <string>
 using namespace std;
 
 void testVector();
 void testLexicalCast();
+void testFunction();
 
 int main()
 {
 	cout << "Hello, world!" << endl;
 
-	testLexicalCast();
+	//testLexicalCast();
+	testFunction();
 	return 0;
 }
 
@@ -61,4 +64,36 @@ void testLexicalCast()
  	cout << boost::lexical_cast<bool>("0") << endl;
 	
 	// test 
+}
+
+void func(int i)
+{
+	cout << i << endl;
+}
+
+class Test1
+{
+public:
+	void func()
+	{
+		cout << "Test1::func()" << endl;
+	}
+
+	void func2(int i)
+	{
+		cout << "Test1::func()" << i << endl;
+	}
+};
+
+void testFunction()
+{
+	boost::function<void (int)> f1 = &func;
+	f1(12);
+
+	Test1 t1;
+	boost::function<void (Test1*)> f2 = &Test1::func;
+	f2(&t1);
+
+	boost::function<void (Test1*, int)> f3 = &Test1::func2;
+	f3(&t1, 100);
 }

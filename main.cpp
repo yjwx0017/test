@@ -5,12 +5,14 @@
 #include <boost/bind.hpp>
 #include <sstream>
 #include <string>
+#include <algorithm>
 using namespace std;
 
 void testVector();
 void testLexicalCast();
 void testFunction();
 void testBind();
+void testLambda();
 
 int main()
 {
@@ -18,7 +20,8 @@ int main()
 
 	//testLexicalCast();
 	//testFunction();
-	testBind();
+	//testBind();
+	testLambda();
 	return 0;
 }
 
@@ -103,7 +106,28 @@ void testFunction()
 
 void testBind()
 {
+	// auto c++11
 	Test1 t1;
 	auto f1 = boost::bind(&Test1::func2, &t1, _1);
 	f1(100);
+}
+
+void testLambda()
+{
+	// c++11 Lambda表达式
+	vector<int> vec;
+	for (int i = 0; i < 5; ++i)
+		vec.push_back(i);
+
+	int a = 1;
+	int b = 2;
+
+	// []内的参数指的是Lambda表达式可以得到的外部变量
+	// 如果在[]中传入=的话，表示可以取得所有的外部变量，如a、b
+	// ()内的参数是每次调用函数时传入的参数
+	// ->后加上的是Lambda表达式返回值的类型
+	for_each(vec.begin(), vec.end(), [b](int& x){ cout << x + b << endl; });
+	for_each(vec.begin(), vec.end(), [=](int& x){ cout << a + b << endl; });
+	for_each(vec.begin(), vec.end(), [=](int& x)->int{ cout << a + b << endl; return x; });
+
 }

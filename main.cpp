@@ -1,11 +1,12 @@
-#include <iostream>
-#include <vector>
 #include <boost/lexical_cast.hpp>
 #include <boost/function.hpp>
 #include <boost/bind.hpp>
+#include <boost/tuple/tuple.hpp>
 #include <sstream>
 #include <string>
 #include <algorithm>
+#include <iostream>
+#include <vector>
 using namespace std;
 
 void testVector();
@@ -13,6 +14,7 @@ void testLexicalCast();
 void testFunction();
 void testBind();
 void testLambda();
+void testTuple();
 
 int main()
 {
@@ -21,7 +23,8 @@ int main()
 	//testLexicalCast();
 	//testFunction();
 	//testBind();
-	testLambda();
+	//testLambda();
+	testTuple();
 	return 0;
 }
 
@@ -129,5 +132,13 @@ void testLambda()
 	for_each(vec.begin(), vec.end(), [b](int& x){ cout << x + b << endl; });
 	for_each(vec.begin(), vec.end(), [=](int& x){ cout << a + b << endl; });
 	for_each(vec.begin(), vec.end(), [=](int& x)->int{ cout << a + b << endl; return x; });
+
+}
+
+void testTuple()
+{
+	boost::tuple<int, double> t1(1, 2.5);
+	cout << t1.get<0>() << endl;
+	cout << t1.get<1>() << endl;
 
 }

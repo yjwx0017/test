@@ -2,6 +2,7 @@
 #include <boost/function.hpp>
 #include <boost/bind.hpp>
 #include <boost/tuple/tuple.hpp>
+#include <boost/any.hpp>
 #include <sstream>
 #include <string>
 #include <algorithm>
@@ -15,6 +16,7 @@ void testFunction();
 void testBind();
 void testLambda();
 void testTuple();
+void testAny();
 
 int main()
 {
@@ -24,7 +26,9 @@ int main()
 	//testFunction();
 	//testBind();
 	//testLambda();
-	testTuple();
+	//testTuple();
+	testAny();
+
 	return 0;
 }
 
@@ -140,5 +144,13 @@ void testTuple()
 	boost::tuple<int, double> t1(1, 2.5);
 	cout << t1.get<0>() << endl;
 	cout << t1.get<1>() << endl;
+}
 
+void testAny()
+{
+	boost::any val = 12;
+	cout << boost::any_cast<int>(val) << endl;
+
+	val = 13.14;
+	cout << boost::any_cast<double>(val) << endl;
 }

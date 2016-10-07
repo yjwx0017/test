@@ -3,6 +3,9 @@
 #include <boost/bind.hpp>
 #include <boost/tuple/tuple.hpp>
 #include <boost/any.hpp>
+#include <boost/uuid/uuid.hpp>
+#include <boost/uuid/uuid_generators.hpp>
+#include <boost/uuid/uuid_io.hpp>
 #include <sstream>
 #include <string>
 #include <algorithm>
@@ -17,6 +20,7 @@ void testBind();
 void testLambda();
 void testTuple();
 void testAny();
+void testUuid();
 
 int main()
 {
@@ -27,7 +31,8 @@ int main()
 	//testBind();
 	//testLambda();
 	//testTuple();
-	testAny();
+	//testAny();
+	testUuid();
 
 	return 0;
 }
@@ -153,4 +158,13 @@ void testAny()
 
 	val = 13.14;
 	cout << boost::any_cast<double>(val) << endl;
+}
+
+void testUuid()
+{
+	boost::uuids::random_generator gen;
+	boost::uuids::uuid u1 = gen();
+	boost::uuids::uuid u2 = gen();
+	cout << u1 << endl;
+	cout << u2 << endl;
 }

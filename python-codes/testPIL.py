@@ -2,7 +2,11 @@
 
 import Image
 
-im = Image.open("134ZQQ1-9.jpg")
+im = Image.open("image.jpg")
 print(im.format, im.size, im.mode)
 
+box = (0, 0, 400, 400)
+region = im.crop(box)
+
+raw_input('')
 

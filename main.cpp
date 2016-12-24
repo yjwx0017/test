@@ -20,7 +20,7 @@ void testBind();
 void testLambda();
 void testTuple();
 void testAny();
-void testUuid();
+void testUUID();
 
 int main()
 {
@@ -32,7 +32,7 @@ int main()
 	//testLambda();
 	//testTuple();
 	//testAny();
-	testUuid();
+        testUUID();
 
 	return 0;
 }
@@ -160,7 +160,7 @@ void testAny()
 	cout << boost::any_cast<double>(val) << endl;
 }
 
-void testUuid()
+void testUUID()
 {
 	boost::uuids::random_generator gen;
 	boost::uuids::uuid u1 = gen();

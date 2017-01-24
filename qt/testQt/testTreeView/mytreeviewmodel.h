@@ -8,6 +8,8 @@
 
 class MyTreeViewModel : public QAbstractItemModel
 {
+	Q_OBJECT
+
 public:
 	MyTreeViewModel(QObject* parent);
 	~MyTreeViewModel();

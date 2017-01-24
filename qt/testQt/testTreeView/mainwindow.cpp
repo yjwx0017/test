@@ -2,11 +2,12 @@
 #include <QTreeView>
 #include <QDebug>
 #include "mytreeviewmodel.h"
+#include "mytreeview.h"
 
 MainWindow::MainWindow(QWidget *parent)
 	: QMainWindow(parent)
 {
-	QTreeView* treeView = new QTreeView(this);
+	MyTreeView* treeView = new MyTreeView(this);
 	setCentralWidget(treeView);
 
 	if (!treeView->model())

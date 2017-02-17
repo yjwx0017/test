@@ -19,6 +19,8 @@ void MyTreeView::drawRow(QPainter *painter,
 	QTreeView::drawRow(painter, options, index);
 	//painter->drawRect(options.rect);
 
+	//style()->drawItemText(painter, options.rect.adjusted(0, 0, -20, 0),
+	//					  Qt::AlignLeft | Qt::TextDontClip, palette(), true, "Test just test,test,testtesttesttest");
 }
 
 void MyTreeView::drawBranches(QPainter *painter,

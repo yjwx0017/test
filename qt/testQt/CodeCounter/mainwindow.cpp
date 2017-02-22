@@ -3,6 +3,10 @@
 #include <QVBoxLayout>
 #include <QLineEdit>
 #include <QPushButton>
+#include <QTreeView>
+#include <QFileSystemModel>
+#include <QDir>
+#include <QDebug>
 
 MainWindow::MainWindow(QWidget *parent)
 	: QWidget(parent)
@@ -16,9 +20,22 @@ MainWindow::MainWindow(QWidget *parent)
 	folderLayout->addWidget(edit);
 	folderLayout->addWidget(button);
 
+	QFileSystemModel* fileSystemModel = new QFileSystemModel(this);
+
+	QDir path(".");
+	path.makeAbsolute();
+
+	fileSystemModel->setRootPath(QDir::currentPath());
+
+	QTreeView* treeView = new QTreeView;
+	treeView->setAlternatingRowColors(true);
+	treeView->setModel(fileSystemModel);
+	treeView->setRootIndex(fileSystemModel->index(QDir::currentPath()));
+
 
 	QVBoxLayout* verticalLayout = new QVBoxLayout(this);
 	verticalLayout->addLayout(folderLayout);
+	verticalLayout->addWidget(treeView);
 }
 
 MainWindow::~MainWindow()

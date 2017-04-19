@@ -6,24 +6,22 @@
 #include <QTreeView>
 #include <QFileSystemModel>
 #include <QDir>
-#include <QDebug>
 
 MainWindow::MainWindow(QWidget *parent)
 	: QWidget(parent)
 {
+	// Folder layout
 	QLineEdit* edit = new QLineEdit;
 	edit->setReadOnly(true);
 
-	QPushButton* button = new QPushButton(tr("浏览"));
+	QPushButton* button = new QPushButton(tr("Open"));
 
 	QHBoxLayout* folderLayout = new QHBoxLayout;
 	folderLayout->addWidget(edit);
 	folderLayout->addWidget(button);
 
+	// File tree layout
 	QFileSystemModel* fileSystemModel = new QFileSystemModel(this);
-
-	QDir path(".");
-	path.makeAbsolute();
 
 	fileSystemModel->setRootPath(QDir::currentPath());
 

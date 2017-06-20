@@ -14,7 +14,9 @@ MainWindow::MainWindow(QWidget *parent)
 		qDebug() << "model is null";
 
 	treeView->setModel(new MyTreeViewModel(this));
+	//treeView->setItemDelegate();
 	//treeView->setRootIsDecorated(false);
+	//treeView->
 }
 
 MainWindow::~MainWindow()

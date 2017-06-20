@@ -31,6 +31,8 @@ QVariant MyTreeViewModel::data(const QModelIndex &index, int role) const
 {
 	if (role == Qt::DisplayRole)
 		return QVariant("Test:)");
+	else if (role == Qt::EditRole)
+		return QVariant("Hello");
 
 	return QVariant();
 }

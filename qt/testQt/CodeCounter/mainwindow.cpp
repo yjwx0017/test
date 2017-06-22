@@ -11,6 +11,7 @@
 #include <QComboBox>
 #include <QGridLayout>
 #include <QCheckBox>
+#include <QTableView>
 
 MainWindow::MainWindow(QWidget *parent)
 	: QWidget(parent)
@@ -66,16 +67,97 @@ MainWindow::MainWindow(QWidget *parent)
 	settingLayout->addLayout(dirLayout, 1, 1, 1, 1);
 	settingLayout->addWidget(containSubDir, 2, 1, 1, 1);
 
-	QGroupBox* settingGroupBox = new QGroupBox(tr("Setting"));
-	settingGroupBox->setLayout(settingLayout);
-	settingGroupBox->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
+	QGroupBox* setting = new QGroupBox(tr("Setting"));
+	setting->setLayout(settingLayout);
+	setting->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
+
+	QTableView* fileList = new QTableView;
+
+	QLabel* total = new QLabel(tr("Total:"));
+	QLabel* codes = new QLabel(tr("Codes:"));
+	QLabel* comments = new QLabel(tr("Comments:"));
+	QLabel* blankLines = new QLabel(tr("BLank Lines:"));
+
+	QLineEdit* totalEdit = new QLineEdit;
+	QLineEdit* codesEdit = new QLineEdit;
+	QLineEdit* commentsEdit = new QLineEdit;
+	QLineEdit* blankLinesEdit = new QLineEdit;
+
+	QGridLayout* leftPart = new QGridLayout;
+	leftPart->addWidget(total, 0, 0, 1, 1);
+	leftPart->addWidget(totalEdit, 0, 1, 1, 1);
+	leftPart->addWidget(comments, 1, 0, 1, 1);
+	leftPart->addWidget(commentsEdit, 1, 1, 1, 1);
+
+	QGridLayout* rightPart = new QGridLayout;
+	rightPart->addWidget(codes, 0, 0, 1, 1);
+	rightPart->addWidget(codesEdit, 0, 1, 1, 1);
+	rightPart->addWidget(blankLines, 1, 0, 1, 1);
+	rightPart->addWidget(blankLinesEdit, 1, 1, 1, 1);
+
+	QHBoxLayout* allPart = new QHBoxLayout;
+	allPart->addLayout(leftPart);
+	allPart->addSpacing(10);
+	allPart->addLayout(rightPart);
+
+	QVBoxLayout* statisticsLayout = new QVBoxLayout;
+	statisticsLayout->addWidget(fileList);
+	statisticsLayout->addLayout(allPart);
+
+	QGroupBox* statistics = new QGroupBox(tr("Statistics"));
+	statistics->setLayout(statisticsLayout);
+
+	QVBoxLayout* leftLayout = new QVBoxLayout;
+	leftLayout->addWidget(setting);
+	leftLayout->addWidget(statistics);
+
+	QPushButton* start = new QPushButton(tr("Count"));
+	QPushButton* stop = new QPushButton(tr("Stop"));
+	QPushButton* output = new QPushButton(tr("Output"));
+	QPushButton* about = new QPushButton(tr("About"));
+	QPushButton* quit = new QPushButton(tr("Quit"));
+
+	QVBoxLayout* rightLayout = new QVBoxLayout;
+	rightLayout->addWidget(start);
+	rightLayout->addWidget(stop);
+	rightLayout->addWidget(output);
+	rightLayout->addStretch();
+	rightLayout->addWidget(about);
+	rightLayout->addWidget(quit);
 
 	QHBoxLayout* rootLayout = new QHBoxLayout(this);
-	rootLayout->addWidget(settingGroupBox);
+	rootLayout->addLayout(leftLayout);
+	rootLayout->addLayout(rightLayout);
 
+	connect(start, SIGNAL(clicked(bool)), this, SLOT(onStartCount()));
+	connect(stop, SIGNAL(clicked(bool)), this, SLOT(onStopCount()));
+	connect(output, SIGNAL(clicked(bool)), this, SLOT(onOutputResult()));
+	connect(about, SIGNAL(clicked(bool)), this, SLOT(onAbout()));
+	connect(quit, SIGNAL(clicked(bool)), this, SLOT(close()));
 }
 
 MainWindow::~MainWindow()
 {
 
 }
+
+void MainWindow::onStartCount()
+{
+
+}
+
+void MainWindow::onStopCount()
+{
+
+}
+
+void MainWindow::onOutputResult()
+{
+
+}
+
+void MainWindow::onAbout()
+{
+
+}
+

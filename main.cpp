@@ -21,6 +21,7 @@ void testLambda();
 void testTuple();
 void testAny();
 void testUUID();
+void testBubbleSort();
 
 int main()
 {
@@ -32,7 +33,8 @@ int main()
 	//testLambda();
 	//testTuple();
 	//testAny();
-        testUUID();
+    //testUUID();
+	testBubbleSort();
 
 	return 0;
 }
@@ -167,4 +169,30 @@ void testUUID()
 	boost::uuids::uuid u2 = gen();
 	cout << u1 << endl;
 	cout << u2 << endl;
+}
+
+// 冒泡排序，从小到大排序
+// 来自维基百科：
+// https://zh.wikipedia.org/wiki/%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F
+template<typename T>
+void bubbleSort(T* arr, int len)
+{
+	for (int i = 0; i < len - 1; ++i)
+	{
+		for (int j = 0; j < len - 1 - i; ++j)
+		{
+			if (arr[j] > arr[j + 1])
+				swap(arr[j], arr[j + 1]);
+		}
+	}
+}
+
+void testBubbleSort()
+{
+	int arr[] = { 12, 45, 12, 8, 0, 6, 5, 90, 86 };
+	int len = sizeof(arr) / sizeof(int);
+	bubbleSort(arr, len);
+	for (int i = 0; i < len; ++i)
+		cout << arr[i] << ' ';
+	cout << endl;
 }

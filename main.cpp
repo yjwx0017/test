@@ -22,6 +22,7 @@ void testTuple();
 void testAny();
 void testUUID();
 void testBubbleSort();
+void testInsertionSort();
 
 int main()
 {
@@ -35,6 +36,7 @@ int main()
 	//testAny();
     //testUUID();
 	testBubbleSort();
+	testInsertionSort();
 
 	return 0;
 }
@@ -192,6 +194,33 @@ void testBubbleSort()
 	int arr[] = { 12, 45, 12, 8, 0, 6, 5, 90, 86 };
 	int len = sizeof(arr) / sizeof(int);
 	bubbleSort(arr, len);
+	for (int i = 0; i < len; ++i)
+		cout << arr[i] << ' ';
+	cout << endl;
+}
+
+// 插入排序
+// 维基百科：
+// https://zh.wikipedia.org/wiki/%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F
+template<typename T>
+void insertionSort(T* arr, int len)
+{
+	for (int i = 1; i < len; ++i)
+	{
+		T temp = arr[i];
+		int j = i - 1;
+		for (; j >= 0 && arr[j] > temp; --j)
+			arr[j + 1] = arr[j];
+
+		arr[j + 1] = temp;
+	}
+}
+
+void testInsertionSort()
+{
+	int arr[] = { 12, 45, 12, 8, 0, 6, 5, 90, 86 };
+	int len = sizeof(arr) / sizeof(int);
+	insertionSort(arr, len);
 	for (int i = 0; i < len; ++i)
 		cout << arr[i] << ' ';
 	cout << endl;

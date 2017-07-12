@@ -11,6 +11,8 @@
 #include <algorithm>
 #include <iostream>
 #include <vector>
+#include <stdlib.h>
+#include <time.h>
 using namespace std;
 
 void testVector();
@@ -23,6 +25,7 @@ void testAny();
 void testUUID();
 void testBubbleSort();
 void testInsertionSort();
+void testRandomShuffle();
 
 int main()
 {
@@ -37,6 +40,7 @@ int main()
     //testUUID();
 	testBubbleSort();
 	testInsertionSort();
+	testRandomShuffle();
 
 	return 0;
 }
@@ -221,6 +225,26 @@ void testInsertionSort()
 	int arr[] = { 12, 45, 12, 8, 0, 6, 5, 90, 86 };
 	int len = sizeof(arr) / sizeof(int);
 	insertionSort(arr, len);
+	for (int i = 0; i < len; ++i)
+		cout << arr[i] << ' ';
+	cout << endl;
+}
+
+template<typename T>
+void randomShuffle(T* arr, int len)
+{
+	srand((unsigned int)time(NULL));
+	for (int i = len - 1; i >= 1; --i)
+	{
+		std::swap(arr[i], arr[rand() % i]);
+	}
+}
+
+void testRandomShuffle()
+{
+	int arr[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13 };
+	int len = sizeof(arr) / sizeof(int);
+	randomShuffle(arr, len);
 	for (int i = 0; i < len; ++i)
 		cout << arr[i] << ' ';
 	cout << endl;

@@ -26,6 +26,7 @@ void testUUID();
 void testBubbleSort();
 void testInsertionSort();
 void testRandomShuffle();
+void testQuickSort();
 
 int main()
 {
@@ -41,6 +42,7 @@ int main()
 	testBubbleSort();
 	testInsertionSort();
 	testRandomShuffle();
+	testQuickSort();
 
 	return 0;
 }
@@ -245,6 +247,49 @@ void testRandomShuffle()
 	int arr[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13 };
 	int len = sizeof(arr) / sizeof(int);
 	randomShuffle(arr, len);
+	for (int i = 0; i < len; ++i)
+		cout << arr[i] << ' ';
+	cout << endl;
+}
+
+// 快速排序 递归法
+// 维基百科：
+// https://zh.wikipedia.org/wiki/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F
+template<typename T>
+void quickSort(T* arr, int start, int end)
+{
+	if (start >= end)
+		return;
+
+	T mid = arr[end];
+
+	int left = start;
+	int right = end - 1;
+	while (left < right)
+	{
+		while (arr[left] < mid && left < right)
+			++left;
+
+		while (arr[right] > mid && left < right)
+			--right;
+
+		std::swap(arr[left], arr[right]);
+	}
+
+	if (arr[left] >= arr[end])
+		std::swap(arr[left], arr[end]);
+	else
+		++left;
+
+	quickSort(arr, start, left - 1);
+	quickSort(arr, left + 1, end);
+}
+
+void testQuickSort()
+{
+	int arr[] = { 12, 45, 12, 8, 0, 6, 5, 90, 86 };
+	int len = sizeof(arr) / sizeof(int);
+	quickSort(arr, 0, len - 1);
 	for (int i = 0; i < len; ++i)
 		cout << arr[i] << ' ';
 	cout << endl;
